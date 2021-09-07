@@ -6,6 +6,7 @@ import Illustration from '../components/Illustration';
 import TextInput from '../components/TextInput';
 import classes from "../styles/Signup.module.css";
 import signupImage from "../assests/images/signup.svg"
+import { Link } from "react-router-dom";
 
 const Signup = () => {
     return (
@@ -21,7 +22,7 @@ const Signup = () => {
                     <Checkbox type="checkbox">I agree to the Terms and Conditions</Checkbox>
                     <Button>Submit now</Button>
                     <div class="info">
-                        Already have an account? <a href="login.html">Login</a> instead.
+                        Already have an account? <Link to="login">Login</Link> instead.
                     </div>
                 </Form>
             </div>

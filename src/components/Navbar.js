@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "../styles/Nabar.module.css";
 import logo from "../assests/images/logo-bg.png";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 const Navbar = () => {
     return (
         <nav className={classes.nav}>
@@ -17,8 +17,8 @@ const Navbar = () => {
                 <span className="material-icons-outlined" title="Account">
                     account_circle
                 </span>
-                <a href="signup.html">Signup</a>
-                <span className="material-icons-outlined" title="Logout"> logout </span>
+                <Link to={'/signup'}>Signup</Link>
+                {/* <span className="material-icons-outlined" title="Logout"> logout </span> */}
             </div>
         </nav>
     );

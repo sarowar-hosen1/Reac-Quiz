@@ -5,6 +5,7 @@ import Form from '../components/Form';
 import TextInput from '../components/TextInput';
 import Button from '../components/Button';
 import classes from '../styles/Login.module.css';
+import {Link} from "react-router-dom"
 
 const Login = () => {
     return (
@@ -16,7 +17,7 @@ const Login = () => {
                     <TextInput type="email" placeholder="Enter email">alternate_email</TextInput>
                     <TextInput type="password" placeholder="Enter password">lock</TextInput>
                     <Button >Submit now</Button>
-                    <div class="info">Don't have an account? <a href="signup.html">Signup</a> instead.</div>
+                    <div class="info">Don't have an account? <Link to="signup">Signup</Link> instead.</div>
                 </Form>
             </div>
         </>
