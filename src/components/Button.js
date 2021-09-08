@@ -3,9 +3,9 @@ import classes from "../styles/Button.module.css";
 
 const Button = ({ children }) => {
     return (
-        <div className={classes.button}>
+        <button className={classes.button}>
             {children}
-        </div>
+        </button>
     );
 };
 

@@ -2,7 +2,11 @@ import React from 'react';
 import classes from "../styles/Nabar.module.css";
 import logo from "../assests/images/logo-bg.png";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+
 const Navbar = () => {
+    const { currentUser, logout } = useAuth();
+
     return (
         <nav className={classes.nav}>
             <ul>
@@ -14,11 +18,19 @@ const Navbar = () => {
                 </li>
             </ul>
             <div className={classes.account}>
-                <span className="material-icons-outlined" title="Account">
-                    account_circle
-                </span>
-                <Link to={'/signup'}>Signup</Link>
-                {/* <span className="material-icons-outlined" title="Logout"> logout </span> */}
+                {
+                    currentUser ?
+                        <>
+                            <span className="material-icons-outlined" title="Account">
+                                account_circle
+                            </span>
+                            <span>{currentUser.displayName}</span>
+                            <span onClick={() => logout()} className="material-icons-outlined" title="Logout"> logout </span>
+                        </>
+                        :
+                        <Link to={'/signup'}>Signup</Link>
+                }
+
             </div>
         </nav>
     );

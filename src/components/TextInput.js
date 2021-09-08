@@ -1,11 +1,11 @@
 import React from 'react';
 import classes from '../styles/TextInput.module.css';
 
-const TextInput = ({ children, ...rest }) => {
+const TextInput = ({ icon, ...rest }) => {
     return (
-        <div class={classes.textInput}>
+        <div className={classes.textInput}>
             <input {...rest} />
-            <span class="material-icons-outlined"> {children} </span>
+            <span class="material-icons-outlined"> {icon} </span>
         </div>
     );
 };

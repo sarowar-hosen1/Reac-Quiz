@@ -1,70 +1,68 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from 'react';
 import {
     getAuth,
     createUserWithEmailAndPassword,
-    updateProfile,
     signInWithEmailAndPassword,
     signOut,
-    onAuthStateChanged
+    onAuthStateChanged,
+    updateProfile
 } from "firebase/auth"
-
-
+import "../firebase";
 
 const AuthContext = React.createContext();
 
-export const useAuth = () => { return useContext(AuthContext) }
-
+export const useAuth = () => {
+    return (useContext(AuthContext))
+}
 
 export const AuthProvider = ({ children }) => {
 
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [currentUser, setCurrentUser] = useState("");
 
     useEffect(() => {
         const auth = getAuth();
-        const unsuscribe = onAuthStateChanged(auth, (user) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user);
             setLoading(false);
         })
-        return unsuscribe;
-    })
+        return unsubscribe;
+    }, [])
 
-    //signup fucntion
+    //signup function
     async function signup(email, password, username) {
         const auth = getAuth();
         await createUserWithEmailAndPassword(auth, email, password);
 
-        //update profile
         await updateProfile(auth.currentUser, {
-            displayName: username,
+            displayName: username
         })
 
-        const user = auth.currentUser();
-        setCurrentUser({
-            ...user,
-        })
+        const user = auth.currentUser;
+        setCurrentUser(user);
     }
 
-    //signin function
-    async function signin(email, password) {
+    //sign in function
+    function signin(email, password) {
         const auth = getAuth();
         return signInWithEmailAndPassword(auth, email, password);
-
     }
 
-    //signout 
+    //logout function
     function logout() {
         const auth = getAuth();
-        return signOut(auth)
+        return signOut(auth);
     }
+
     const value = {
+        currentUser,
         signup,
         signin,
-        logout
+        logout,
     }
 
     return (
-        <AuthContext.Provider value={value} >
+        <AuthContext.Provider value={value}>
             {!loading && children}
         </AuthContext.Provider>
     )
