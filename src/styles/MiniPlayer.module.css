@@ -12,7 +12,7 @@
     border-radius: 5px;
   }
   
-  .miniPlayer img {
+  .miniPlayer .player {
     width: 300px;
     aspect-ratio: 16 / 9;
     object-fit: cover;
@@ -94,7 +94,7 @@
     display: none;
   }
   
-  .floatingBtn img {
+  .floatingBtn .player {
     transform: scale(0);
     display: none;
   }

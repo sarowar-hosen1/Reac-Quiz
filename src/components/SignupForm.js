@@ -7,6 +7,8 @@ import Form from "./Form";
 import TextInput from "./TextInput";
 
 export default function SignupForm() {
+
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
